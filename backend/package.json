@@ -1,0 +1,10 @@
+{
+  "name": "mein-backend",
+  "version": "1.0.0",
+  "description": "Beschreibung deines Backends",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+  }
+}

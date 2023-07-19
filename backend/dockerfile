@@ -1,0 +1,17 @@
+# Verwende das Basis-Image für dein Backend, z. B. eine bestimmte Version von Node.js oder Python.
+FROM node:14
+
+# Setze das Arbeitsverzeichnis im Container auf das Backend-Verzeichnis
+WORKDIR /usr/src/app
+
+# Kopiere die Dateien aus deinem lokalen Backend-Verzeichnis in das Arbeitsverzeichnis im Container.
+COPY . .
+
+# Kopiere die pokemon.json-Datei in das Arbeitsverzeichnis im Container.
+COPY pokemon.json /usr/src/app/
+
+# Installiere alle Abhängigkeiten, die für dein Backend erforderlich sind.
+RUN npm install # Oder der entsprechende Befehl für deine spezifische Sprache oder Framework.
+
+# Starte dein Backend, z. B. durch Ausführen des Startbefehls oder Ausführen eines Skripts.
+CMD ["npm", "start"] # Oder der entsprechende Befehl für deine spezifische Sprache oder Framework.

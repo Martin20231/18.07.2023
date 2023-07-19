@@ -1,0 +1,115 @@
+/* Allgemeine Stile */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar-Stile */
+nav {
+  background-color: #1ab5e0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center; /* Zentriert die Elemente horizontal */
+  color: #000; /* Schwarze Textfarbe */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #f3e7e7;
+  padding: 10px; /* erhöht den horizontalen Abstand auf 10px */
+}
+
+nav li a:hover {
+  background-color: #ddd;
+}
+
+/* Hauptinhalt-Stile */
+h1 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+/* Footer-Stile */
+footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.pokemon-ball {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-image: url('https://seeklogo.com/images/P/pokeball-logo-DC23868CA1-seeklogo.com.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+
+footer li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+footer li a {
+  text-decoration: none;
+  color: #333;
+}
+
+footer li a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Boxen werden in mehreren Zeilen angeordnet */
+  justify-content: space-between; /* Gleichmäßiger Abstand zwischen den Boxen */
+  background-color: #1ab5e0;
+}
+
+.box {
+  flex-basis: calc(33.33% - 10px); /* Platz für drei Boxen in einer Reihe mit Abstand */
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-sizing: border-box; /* Berücksichtigung der Box-Größe inklusive Border und Padding */
+}
+
+.box:nth-child(3n) {
+  margin-right: 0; /* Kein rechter Abstand für das dritte Element in jeder Reihe */
+}
+
+.box h2 {
+  color: #333;
+}
+
+.box p {
+  color: #666;
+  font-weight: bold;
+}

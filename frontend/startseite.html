@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Startseite</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // Funktion für die Sprachausgabe
+      function textToSpeech(text) {
+        var speech = new SpeechSynthesisUtterance();
+        speech.text = text;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        window.speechSynthesis.speak(speech);
+      }
+      
+      $(document).ready(function() {
+        $('#play-button').click(function() {
+          var message = "Herzlich Willkommen auf unserer Pokémon-Webseite! Wir sind begeisterte Pokémon-Trainer und freuen uns, Sie hier begrüßen zu dürfen. Tauchen Sie ein in die faszinierende Welt der Pokémon und lassen Sie sich von unseren Inhalten und Informationen begeistern. Hier sind einige coole Pokémon-Sprüche, um Ihre Reise zu beginnen: 1. 'Ein wahrer Max kennt keine Grenzen!' 2. 'Max will der allerbeste sein, wie keiner vor ihm war' 3. 'Mit Mut und Leidenschaft erreicht man jedes Pokémon-Ziel!' 4. 'Jedes Pokémon hat seine Stärken. Entdecke sie und nutze sie!' 5. 'Max, sei bereit! Ein legendäres Pokémon erwartet dich!' Wir hoffen, dass Sie viel Spaß beim Erkunden unserer Webseite haben und viele aufregende Pokémon-Abenteuer erleben. Gehen Sie raus, fangen Sie Pokémon und werden Sie der beste Pokémon-Trainer, den es je gegeben hat! Gute Reise und viel Erfolg!";
+      
+          // Aufruf der Sprachausgabe
+          textToSpeech(message);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <nav>
+      <ul class="center">
+        <li><a href="startseite.html">Startseite</a></li>
+        <li><a href="index.html">Pokedex</a></li>
+      </ul>
+    </nav>
+    <!-- Play-Button-->
+    <button id="play-button" type="button">Sprachausgabe starten</button>
+    <!-- Weitere Inhalte der Startseite-->
+    <!-- Pokémon-Ball-->
+    <div class="pokemon-ball" onclick="window.location.href='index.html'"></div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  # MongoDB-Container
+  db:
+    image: mongo:latest
+    container_name: pokemon_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - db_data:/data/db
+
+  # Backend-Container
+  backend:
+    image: backend_image_name # Ersetze '<backend_image_name>' durch den tatsächlichen Namen deines Backend-Images
+    container_name: pokemon_backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  # Frontend-Container
+  frontend:
+    image: nginx:latest
+    container_name: pokemon_frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - backend
+
+volumes:
+  db_data:

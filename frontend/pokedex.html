@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Index</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body> </body>
+</html>
+<nav>
+  <ul class="center">
+    <li><a href="startseite.html">Startseite</a></li>
+    <li><a href="index.html">Pokedex</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="box"><a href="index.html"><img id="pokemon-image" src="includes/Bilder/001.png" alt="Pokémon 01"></a>
+    <p id="pokemon-id">undefined</p>
+    <p id="pokemon-name">Pokémon undefined</p>
+    <p id="pokemon-description">Beschreibung: ...</p>
+    <p id="pokemon-type">Typ: ...</p>
+    <p id="pokemon-size">Größe: ...</p>
+  </div>
+</div>
+<footer>
+  <ul>
+    <li><a href="startseite.html">Startseite</a></li>
+    <li><a href="index.html">Pokedex</a></li>
+  </ul>
+</footer>
+<script>
+  // Funktion zum Ändern des Bildes und der Pokémon-Daten basierend auf der ID in der Query-Parameter URL
+  function changeImageAndData() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id');
+    const image = document.getElementById('pokemon-image');
+    const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${String(id).padStart(3, '0')}.png`;
+    image.src = imageUrl;
+    image.alt = `Pokémon ${String(id).padStart(3, '0')}`;
+  
+    // JSON-Daten laden und Pokémon-Daten anzeigen
+    loadJSONData();
+  }
+  
+  // Funktion zum Laden der JSON-Daten
+  function loadJSONData() {
+    fetch('pokemon.json')
+      .then(response => response.json())
+      .then(data => displayPokemonData(data))
+      .catch(error => console.log('Fehler beim Laden der JSON-Daten:', error));
+  }
+  
+  // Funktion zum Anzeigen der Pokémon-Daten
+  function displayPokemonData(pokemonData) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id');
+    const pokemon = pokemonData[id - 1];
+    if (pokemon) {
+      document.getElementById('pokemon-id').textContent = String(id).padStart(3, '0');
+      document.getElementById('pokemon-name').textContent = pokemon.Name;
+      document.getElementById('pokemon-description').textContent = `Beschreibung: ${pokemon.Beschreibung}`;
+      document.getElementById('pokemon-type').textContent = `Typ: ${pokemon.Typ}`;
+      document.getElementById('pokemon-size').textContent = `Größe: ${pokemon.Größe}`;
+    }
+  }
+  
+  // Aufruf der Funktion beim Laden der Seite
+  window.onload = changeImageAndData;
+</script>
